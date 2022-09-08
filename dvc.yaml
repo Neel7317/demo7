@@ -36,4 +36,10 @@ stages:
     outs:
     - models/model.joblib
 
+  model_monitor:
+    cmd: python src/models/model_moniter.py --config=params.yaml
+    deps:
+    - data/raw/train_new.csv
+    outs:
+    - reports/data_and_target_drift_dashboard.html
   

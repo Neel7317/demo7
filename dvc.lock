@@ -39,8 +39,8 @@ stages:
       md5: 8358e3ab11f8301c58d3b0e5aa99a6fd
       size: 96317
     - path: src/models/train_model.py
-      md5: 3d23b58cd5f1d6401a99ec42c6ebdb6e
-      size: 3878
+      md5: 9d2d38232fc439f15d1f6a1f8d7536fd
+      size: 3908
     params:
       params.yaml:
         random_forest.max_depth: 10
@@ -59,3 +59,13 @@ stages:
     - path: models/model.joblib
       md5: 30f8162522be491bcd3847912f136f74
       size: 533910
+  model_monitor:
+    cmd: python src/models/model_moniter.py --config=params.yaml
+    deps:
+    - path: data/raw/train_new.csv
+      md5: dc73c86273dfc5c9170a94003ffeaa08
+      size: 27387
+    outs:
+    - path: reports/data_and_target_drift_dashboard.html
+      md5: 53a563886e8b0831b5a0b5e2da075a84
+      size: 3207783
